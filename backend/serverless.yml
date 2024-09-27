@@ -1,0 +1,61 @@
+service: individuell-examination-shui-victoria-sten-asenius-FE23
+frameworkVersion: '4'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  profile: IAMvickanS
+  region: eu-north-1
+  environment:
+    STAGE: ${opt:stage, 'dev'}
+    DYNAMODB_TABLE: MessagesTable-dev
+  iam:
+    role: arn:aws:iam::430118834227:role/BigRole
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:PutItem"
+        - "dynamodb:UpdateItem"
+        - "dynamodb:GetItem"
+        - "dynamodb:Scan"
+      Resource:
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
+functions:
+  get:
+    handler: functions/getMessages/index.getMessages
+    name: getMsg
+    events:
+      - http:
+          path: messages
+          method: get
+
+  create:
+    handler: functions/createMessage/index.createMessage
+    name: createMsg
+    events:
+      - http:
+          path: message
+          method: post
+
+  update:
+    handler: functions/updateMessage/index.updateMessage
+    name: updateMsg
+    events:
+      - http:
+          path: message/{id}
+          method: put
+
+resources:
+  Resources:
+    MessagesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: MessagesTable-dev
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
