@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/index.jsx';
 import PostMessage from './pages/PostMessage/index.jsx';
 import './App.css';
+import './styles/GlobalStyles.css'; // Importera global CSS
+import './styles/MessageList.css'; // Importera MessageList CSS
 
 function App() {
   return (
