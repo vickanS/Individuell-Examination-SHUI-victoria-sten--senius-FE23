@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await axios.get("https://7uc70ol753.execute-api.eu-north-1.amazonaws.com/dev/messages");
+        const response = await axios.get("https://d1wjn20dja.execute-api.eu-north-1.amazonaws.com/messages");
         console.log('API Response:', response.data);
         setMessages(response.data.data);
       } catch (error) {
