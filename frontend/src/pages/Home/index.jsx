@@ -9,7 +9,8 @@ const Home = () => {
     const fetchMessages = async () => {
       try {
         const response = await axios.get("https://7uc70ol753.execute-api.eu-north-1.amazonaws.com/dev/messages");
-        setMessages(response.data);
+        console.log('API Response:', response.data);
+        setMessages(response.data.data);
       } catch (error) {
         console.error("Error fetching messages:", error);
       }
