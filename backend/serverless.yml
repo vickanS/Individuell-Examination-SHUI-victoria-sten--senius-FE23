@@ -20,44 +20,45 @@ provider:
         - "dynamodb:Scan"
       Resource:
         - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
 httpApi:
   cors:
     allowedOrigins:
-        - '*'
+      - '*'
     allowedMethods:
-        - GET
-        - POST
-        - PUT
+      - GET
+      - POST
+      - PUT
     allowedHeaders:
-        - Content-Type
-        - X-Amz-Date
-        - Authorization
-        - X-Api-Key
-        - X-Amz-Security-Token
+      - Content-Type
+      - X-Amz-Date
+      - Authorization
+      - X-Api-Key
+      - X-Amz-Security-Token
 
 functions:
   get:
     handler: functions/getMessages/index.getMessages
     name: getMsg
     events:
-      - http:
-          path: messages
+      - httpApi:
+          path: /messages
           method: get
 
   create:
     handler: functions/createMessage/index.createMessage
     name: createMsg
     events:
-      - http:
-          path: message
+      - httpApi:
+          path: /message
           method: post
 
   update:
     handler: functions/updateMessage/index.updateMessage
     name: updateMsg
     events:
-      - http:
-          path: message/{id}
+      - httpApi:
+          path: /message/{id}
           method: put
 
 resources:
