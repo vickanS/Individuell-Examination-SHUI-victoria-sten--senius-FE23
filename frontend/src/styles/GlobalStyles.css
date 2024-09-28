@@ -1,0 +1,10 @@
+body {
+    font-family: Arial, sans-serif; /* Standard font */
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9; /* Ljus bakgrund */
+  }
+  
+  h2 {
+    color: #333; /* Färg för rubriker */
+  }
