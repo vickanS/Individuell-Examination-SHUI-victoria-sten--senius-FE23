@@ -1,5 +1,5 @@
 service: individuell-examination-shui-victoria-sten-asenius-FE23
-frameworkVersion: '4'
+frameworkVersion: "4"
 
 provider:
   name: aws
@@ -20,21 +20,20 @@ provider:
         - "dynamodb:Scan"
       Resource:
         - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
-
-httpApi:
-  cors:
-    allowedOrigins:
-      - '*'
-    allowedMethods:
-      - GET
-      - POST
-      - PUT
-    allowedHeaders:
-      - Content-Type
-      - X-Amz-Date
-      - Authorization
-      - X-Api-Key
-      - X-Amz-Security-Token
+  httpApi:
+    cors:
+      allowedOrigins:
+        - "*"
+      allowedMethods:
+        - GET
+        - POST
+        - PUT
+      allowedHeaders:
+        - Content-Type
+        - X-Amz-Date
+        - Authorization
+        - X-Api-Key
+        - X-Amz-Security-Token
 
 functions:
   get:
