@@ -50,7 +50,7 @@ const MessageItem = ({ message, messages, setMessages }) => {
       ) : (
         <>
           <span>{message.username}: {message.text} {new Date(message.createdAt).toLocaleString()}</span>
-          <button onClick={() => setIsEditing(true)}>✏️</button>
+          <button onClick={() => setIsEditing(true)}>Ändra</button>
         </>
       )}
     </li>
