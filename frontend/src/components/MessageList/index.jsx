@@ -1,7 +1,12 @@
 import React from 'react';
-import MessageItem from '../MessageItem';
+import MessageItem from '../MessageItem'; // Import the MessageItem component for displaying individual messages
 
+// MessageList component takes in two props: 
+// 1. 'messages' (an array of messages) 
+// 2. 'setMessages' (a function to update the messages array)
 const MessageList = ({ messages, setMessages }) => {
+  
+  // Sorts the messages by creation date (from oldest to newest)
   const sortedMessages = messages.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
   return (
