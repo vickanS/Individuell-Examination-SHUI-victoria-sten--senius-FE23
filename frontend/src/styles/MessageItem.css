@@ -1,0 +1,12 @@
+.Message-items {
+    margin: 10px 0; /* Mellanrum mellan meddelanden */
+    padding: 10px;
+    background-color: #17aacb; /* Ljus bakgrundsfärg */
+    display: block;
+  }
+
+  .Message-items button {
+    margin-left: 15px;
+    margin-top: 10px; /* Mellanrum överst */
+    cursor: pointer; /* Ändrar muspekaren till en hand */
+  }

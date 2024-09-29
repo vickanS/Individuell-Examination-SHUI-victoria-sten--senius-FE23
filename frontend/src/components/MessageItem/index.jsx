@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../MessageItem'
 
 const MessageItem = ({ message, messages, setMessages }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -49,7 +50,7 @@ const MessageItem = ({ message, messages, setMessages }) => {
         </form>
       ) : (
         <>
-          <span>{message.username}: {message.text} {new Date(message.createdAt).toLocaleString()}</span>
+          <span className='username'><strong>{message.username}</strong>: <em>{message.text}</em> {new Date(message.createdAt).toLocaleString()}</span>
           <button onClick={() => setIsEditing(true)}>Ändra</button>
         </>
       )}
