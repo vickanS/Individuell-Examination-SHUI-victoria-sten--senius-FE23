@@ -22,6 +22,7 @@ const Home = () => {
 
   return (
     <div>
+      <h1>Anslagstavla!</h1>
       <h2>Meddelanden</h2>
       <MessageList messages={messages} setMessages={setMessages} />
       <PostMessage setMessages={setMessages} messages={messages}/>
