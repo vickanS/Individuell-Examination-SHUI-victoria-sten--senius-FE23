@@ -30,7 +30,7 @@ const MessageItem = ({ message, messages, setMessages }) => {
   };
 
   return (
-    <li>
+    <li className='Message-items'>
       {isEditing ? (
         <form onSubmit={handleEdit}>
           <input 
