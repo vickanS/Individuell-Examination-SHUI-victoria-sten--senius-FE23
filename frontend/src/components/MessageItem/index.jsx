@@ -9,13 +9,16 @@ const MessageItem = ({ message, messages, setMessages }) => {
   const handleEdit = async (e) => {
     e.preventDefault();
     
-    const updatedMessage = { username, text };
+    const updatedMessage = { 
+      username: username.trim(), 
+      text: text.trim(), 
+      createdAt: new Date().toISOString() 
+    };
 
     try {
       const response = await axios.put(`https://b8i1f9szld.execute-api.eu-north-1.amazonaws.com/message/${message.id}`, updatedMessage);
       console.log('Message updated:', response.data);
       
-      // Uppdatera meddelandelistan lokalt
       const updatedMessages = messages.map((msg) =>
         msg.id === message.id ? { ...msg, ...updatedMessage } : msg
       );
@@ -47,7 +50,7 @@ const MessageItem = ({ message, messages, setMessages }) => {
       ) : (
         <>
           <span>{message.username}: {message.text} {new Date(message.createdAt).toLocaleString()}</span>
-          <button onClick={() => setIsEditing(true)}>✏️</button> {}
+          <button onClick={() => setIsEditing(true)}>✏️</button>
         </>
       )}
     </li>
